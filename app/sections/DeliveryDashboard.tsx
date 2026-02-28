@@ -2,9 +2,7 @@
 
 import React, { useState } from 'react'
 import { FiNavigation, FiPhone, FiMapPin, FiClock, FiStar, FiCheck, FiPackage, FiDollarSign, FiTruck } from 'react-icons/fi'
-import { Switch } from '@/components/ui/switch'
-import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
+/* plain HTML/Tailwind used instead of shadcn/ui */
 
 const MOCK_ACTIVE_DELIVERY = {
   orderId: 'ORD-1005',
@@ -58,7 +56,7 @@ export default function DeliveryDashboard() {
           </div>
           <div className="flex items-center gap-3">
             <span className="text-sm font-medium" style={{ color: isOnline ? '#4CAF50' : '#9C7A5A' }}>{isOnline ? 'Online' : 'Offline'}</span>
-            <Switch checked={isOnline} onCheckedChange={setIsOnline} />
+            <button onClick={() => setIsOnline(!isOnline)} className="relative inline-flex h-6 w-11 items-center rounded-full transition-colors duration-200" style={{ backgroundColor: isOnline ? '#4CAF50' : '#F0DED0' }}><span className="inline-block h-5 w-5 transform rounded-full bg-white shadow-lg transition-transform duration-200" style={{ transform: isOnline ? 'translateX(20px)' : 'translateX(2px)' }} /></button>
           </div>
         </div>
       </div>
@@ -89,9 +87,9 @@ export default function DeliveryDashboard() {
               <div className="bg-white rounded-2xl shadow-md overflow-hidden" style={{ border: '2px solid #FF6B35' }}>
                 <div className="px-4 py-2 flex items-center justify-between" style={{ backgroundColor: '#FF6B35' }}>
                   <span className="text-white font-bold text-sm">Active Delivery</span>
-                  <Badge className="text-xs" style={{ backgroundColor: '#FFD93D', color: '#2D1810' }}>
+                  <span className="text-xs px-2 py-0.5 rounded-full" style={{ backgroundColor: '#FFD93D', color: '#2D1810' }}>
                     {deliveryStatus === 'pickup' ? 'Pick Up' : 'Delivering'}
-                  </Badge>
+                  </span>
                 </div>
 
                 <div className="p-4 space-y-4">

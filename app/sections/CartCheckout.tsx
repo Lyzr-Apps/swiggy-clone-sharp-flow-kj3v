@@ -2,9 +2,7 @@
 
 import React, { useState } from 'react'
 import { FiArrowLeft, FiMinus, FiPlus, FiTrash2, FiMapPin, FiCreditCard, FiTag, FiCheck } from 'react-icons/fi'
-import { Input } from '@/components/ui/input'
-import { Button } from '@/components/ui/button'
-import { Badge } from '@/components/ui/badge'
+/* plain HTML/Tailwind used instead of shadcn/ui */
 
 interface CartItem {
   id: string
@@ -60,7 +58,7 @@ export default function CartCheckout({ cart, onAddItem, onRemoveItem, onDeleteIt
             <FiArrowLeft className="w-5 h-5" style={{ color: '#2D1810' }} />
           </button>
           <h1 className="text-lg font-bold" style={{ color: '#2D1810' }}>Your Cart</h1>
-          <Badge className="ml-auto text-xs" style={{ backgroundColor: '#FF6B35', color: '#FFFFFF' }}>{cart.length} items</Badge>
+          <span className="ml-auto text-xs px-2 py-0.5 rounded-full" style={{ backgroundColor: '#FF6B35', color: '#FFFFFF' }}>{cart.length} items</span>
         </div>
       </div>
 
@@ -73,7 +71,7 @@ export default function CartCheckout({ cart, onAddItem, onRemoveItem, onDeleteIt
             </div>
             <h3 className="font-bold text-lg mb-2" style={{ color: '#2D1810' }}>Your cart is empty</h3>
             <p className="text-sm mb-4" style={{ color: '#9C7A5A' }}>Add items from a restaurant to get started</p>
-            <Button onClick={onBack} style={{ backgroundColor: '#FF6B35', color: '#FFFFFF' }}>Browse Restaurants</Button>
+            <button onClick={onBack} className="px-4 py-2 rounded-lg text-sm font-medium" style={{ backgroundColor: '#FF6B35', color: '#FFFFFF' }}>Browse Restaurants</button>
           </div>
         )}
 
@@ -124,8 +122,8 @@ export default function CartCheckout({ cart, onAddItem, onRemoveItem, onDeleteIt
             <div className="bg-white rounded-xl p-4 shadow-sm" style={{ border: '1px solid #F0DED0' }}>
               <div className="flex items-center gap-2">
                 <FiTag className="w-5 h-5" style={{ color: '#FF6B35' }} />
-                <Input placeholder="Enter coupon code" value={couponCode} onChange={e => setCouponCode(e.target.value)} className="flex-1 h-9 text-sm" style={{ borderColor: '#F0DED0' }} />
-                <Button onClick={handleApplyCoupon} size="sm" style={{ backgroundColor: '#FF6B35', color: '#FFFFFF' }}>Apply</Button>
+                <input placeholder="Enter coupon code" value={couponCode} onChange={e => setCouponCode(e.target.value)} className="flex-1 h-9 text-sm px-3 rounded-md border outline-none" style={{ borderColor: '#F0DED0' }} />
+                <button onClick={handleApplyCoupon} className="px-3 py-1.5 rounded-md text-sm font-medium" style={{ backgroundColor: '#FF6B35', color: '#FFFFFF' }}>Apply</button>
               </div>
               {couponMsg && (
                 <p className="text-xs mt-2 flex items-center gap-1" style={{ color: couponApplied ? '#4CAF50' : '#E53935' }}>

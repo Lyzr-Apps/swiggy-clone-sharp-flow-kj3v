@@ -3,8 +3,7 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { FiHelpCircle, FiSend, FiX, FiAlertTriangle } from 'react-icons/fi'
 import { callAIAgent } from '@/lib/aiAgent'
-import { Input } from '@/components/ui/input'
-import { ScrollArea } from '@/components/ui/scroll-area'
+/* plain HTML/Tailwind used instead of shadcn/ui */
 
 interface ChatMessage {
   role: 'user' | 'agent'
@@ -176,7 +175,7 @@ export default function OrderSupport() {
               </div>
             )}
             <div className="flex gap-2">
-              <Input value={inputValue} onChange={e => setInputValue(e.target.value)} onKeyDown={handleKeyDown} placeholder="Type your message..." className="flex-1 h-10 text-sm rounded-xl" style={{ borderColor: '#F0DED0', backgroundColor: '#FFF8F0' }} disabled={loading} />
+              <input value={inputValue} onChange={e => setInputValue(e.target.value)} onKeyDown={handleKeyDown} placeholder="Type your message..." className="flex-1 h-10 text-sm rounded-xl px-3 border outline-none" style={{ borderColor: '#F0DED0', backgroundColor: '#FFF8F0' }} disabled={loading} />
               <button onClick={() => sendMessage(inputValue)} disabled={loading || !inputValue.trim()} className="w-10 h-10 rounded-xl flex items-center justify-center transition-all disabled:opacity-40" style={{ backgroundColor: '#FF6B35' }}>
                 <FiSend className="w-4 h-4 text-white" />
               </button>

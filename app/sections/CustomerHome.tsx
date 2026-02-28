@@ -3,10 +3,7 @@
 import React, { useState } from 'react'
 import { FiSearch, FiStar, FiClock, FiMapPin, FiShoppingCart, FiChevronDown, FiHeart, FiFilter } from 'react-icons/fi'
 import { callAIAgent } from '@/lib/aiAgent'
-import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area'
-import { Badge } from '@/components/ui/badge'
-import { Input } from '@/components/ui/input'
-import { Button } from '@/components/ui/button'
+/* plain HTML/Tailwind used instead of shadcn/ui */
 
 export interface Restaurant {
   id: string
@@ -123,14 +120,14 @@ export default function CustomerHome({ restaurants, cart, onSelectRestaurant, on
         {/* Search */}
         <div className="relative">
           <FiSearch className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5" style={{ color: '#9C7A5A' }} />
-          <Input placeholder="Search for restaurants, cuisines..." value={searchQuery} onChange={e => setSearchQuery(e.target.value)} className="pl-10 h-12 rounded-xl text-sm border-2 focus:ring-2 focus:ring-orange-200" style={{ borderColor: '#F0DED0', backgroundColor: '#FFFFFF', color: '#2D1810' }} />
+          <input placeholder="Search for restaurants, cuisines..." value={searchQuery} onChange={e => setSearchQuery(e.target.value)} className="w-full pl-10 h-12 rounded-xl text-sm border-2 focus:ring-2 focus:ring-orange-200 outline-none" style={{ borderColor: '#F0DED0', backgroundColor: '#FFFFFF', color: '#2D1810' }} />
           <button className="absolute right-3 top-1/2 -translate-y-1/2 p-1 rounded-lg hover:bg-orange-50">
             <FiFilter className="w-4 h-4" style={{ color: '#9C7A5A' }} />
           </button>
         </div>
 
         {/* Category Chips */}
-        <ScrollArea className="w-full">
+        <div className="w-full overflow-x-auto">
           <div className="flex gap-2 pb-2">
             {CATEGORIES.map(cat => (
               <button key={cat} onClick={() => setSelectedCategory(cat)} className="px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-all duration-200" style={{ backgroundColor: selectedCategory === cat ? '#FF6B35' : '#FFFFFF', color: selectedCategory === cat ? '#FFFFFF' : '#6B4423', border: `1.5px solid ${selectedCategory === cat ? '#FF6B35' : '#F0DED0'}` }}>
@@ -138,8 +135,7 @@ export default function CustomerHome({ restaurants, cart, onSelectRestaurant, on
               </button>
             ))}
           </div>
-          <ScrollBar orientation="horizontal" />
-        </ScrollArea>
+        </div>
 
         {/* AI Recommendation CTA */}
         <div className="rounded-2xl p-5 cursor-pointer transition-all duration-300 hover:shadow-lg" style={{ background: 'linear-gradient(135deg, #FF6B35 0%, #FFB347 50%, #FFD93D 100%)' }} onClick={!aiLoading ? handleGetRecommendations : undefined}>
@@ -201,7 +197,7 @@ export default function CustomerHome({ restaurants, cart, onSelectRestaurant, on
                     {Array.isArray(rec?.popular_dishes) && rec.popular_dishes.length > 0 && (
                       <div className="flex flex-wrap gap-1">
                         {rec.popular_dishes.slice(0, 3).map((d: string, di: number) => (
-                          <Badge key={di} variant="secondary" className="text-xs" style={{ backgroundColor: '#FFF8F0', color: '#FF6B35', border: '1px solid #FFB347' }}>{d}</Badge>
+                          <span key={di} className="text-xs px-2 py-0.5 rounded-full" style={{ backgroundColor: '#FFF8F0', color: '#FF6B35', border: '1px solid #FFB347' }}>{d}</span>
                         ))}
                       </div>
                     )}

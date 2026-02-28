@@ -2,9 +2,7 @@
 
 import React, { useState } from 'react'
 import { FiGrid, FiUsers, FiShoppingBag, FiPackage, FiBarChart2, FiSearch, FiCheck, FiX, FiTrendingUp, FiTrendingDown, FiMenu, FiEye } from 'react-icons/fi'
-import { Badge } from '@/components/ui/badge'
-import { Input } from '@/components/ui/input'
-import { Switch } from '@/components/ui/switch'
+/* plain HTML/Tailwind used instead of shadcn/ui */
 
 const SIDEBAR_ITEMS = [
   { key: 'dashboard', label: 'Dashboard', icon: FiGrid },
@@ -147,7 +145,7 @@ export default function AdminPanel() {
             <>
               <div className="relative max-w-md">
                 <FiSearch className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4" style={{ color: '#9C7A5A' }} />
-                <Input placeholder="Search users..." value={userSearch} onChange={e => setUserSearch(e.target.value)} className="pl-10 h-10" style={{ borderColor: '#F0DED0' }} />
+                <input placeholder="Search users..." value={userSearch} onChange={e => setUserSearch(e.target.value)} className="w-full pl-10 h-10 rounded-md border outline-none text-sm" style={{ borderColor: '#F0DED0' }} />
               </div>
               <div className="bg-white rounded-xl shadow-sm overflow-hidden" style={{ border: '1px solid #F0DED0' }}>
                 <div className="overflow-x-auto">
@@ -173,10 +171,10 @@ export default function AdminPanel() {
                               </div>
                             </div>
                           </td>
-                          <td className="px-4 py-3 hidden md:table-cell"><Badge variant="secondary" className="text-xs" style={{ backgroundColor: '#FFF8F0', color: '#6B4423' }}>{u.role}</Badge></td>
+                          <td className="px-4 py-3 hidden md:table-cell"><span className="text-xs px-2 py-0.5 rounded-full" style={{ backgroundColor: '#FFF8F0', color: '#6B4423' }}>{u.role}</span></td>
                           <td className="px-4 py-3 hidden md:table-cell" style={{ color: '#6B4423' }}>{u.orders}</td>
                           <td className="px-4 py-3">
-                            <Badge className="text-xs" style={{ backgroundColor: u.status === 'active' ? '#E8F5E9' : '#FFEBEE', color: u.status === 'active' ? '#4CAF50' : '#E53935' }}>{u.status}</Badge>
+                            <span className="text-xs px-2 py-0.5 rounded-full" style={{ backgroundColor: u.status === 'active' ? '#E8F5E9' : '#FFEBEE', color: u.status === 'active' ? '#4CAF50' : '#E53935' }}>{u.status}</span>
                           </td>
                           <td className="px-4 py-3">
                             <button onClick={() => toggleUserStatus(u.id)} className="text-xs font-medium px-3 py-1 rounded-lg" style={{ color: u.status === 'active' ? '#E53935' : '#4CAF50', border: `1px solid ${u.status === 'active' ? '#E53935' : '#4CAF50'}` }}>
@@ -239,7 +237,7 @@ export default function AdminPanel() {
                           <td className="px-4 py-3 hidden md:table-cell" style={{ color: '#6B4423' }}>{r.cuisine}</td>
                           <td className="px-4 py-3 hidden md:table-cell" style={{ color: '#6B4423' }}>{r.rating > 0 ? r.rating : '-'}</td>
                           <td className="px-4 py-3">
-                            <Badge className="text-xs" style={{ backgroundColor: r.status === 'approved' ? '#E8F5E9' : '#FFF3E0', color: r.status === 'approved' ? '#4CAF50' : '#E65100' }}>{r.status}</Badge>
+                            <span className="text-xs px-2 py-0.5 rounded-full" style={{ backgroundColor: r.status === 'approved' ? '#E8F5E9' : '#FFF3E0', color: r.status === 'approved' ? '#4CAF50' : '#E65100' }}>{r.status}</span>
                           </td>
                         </tr>
                       ))}
@@ -259,9 +257,9 @@ export default function AdminPanel() {
                   <div>
                     <div className="flex items-center gap-2">
                       <p className="font-bold text-sm" style={{ color: '#2D1810' }}>{o.id}</p>
-                      <Badge className="text-xs capitalize" style={{ backgroundColor: o.status === 'placed' ? '#E3F2FD' : o.status === 'preparing' ? '#FFF3E0' : o.status === 'on_way' ? '#E8F5E9' : '#F3E5F5', color: o.status === 'placed' ? '#1976D2' : o.status === 'preparing' ? '#E65100' : o.status === 'on_way' ? '#4CAF50' : '#7B1FA2' }}>
+                      <span className="text-xs capitalize px-2 py-0.5 rounded-full" style={{ backgroundColor: o.status === 'placed' ? '#E3F2FD' : o.status === 'preparing' ? '#FFF3E0' : o.status === 'on_way' ? '#E8F5E9' : '#F3E5F5', color: o.status === 'placed' ? '#1976D2' : o.status === 'preparing' ? '#E65100' : o.status === 'on_way' ? '#4CAF50' : '#7B1FA2' }}>
                         {o.status.replace('_', ' ')}
-                      </Badge>
+                      </span>
                     </div>
                     <p className="text-xs mt-1" style={{ color: '#6B4423' }}>{o.customer} from {o.restaurant}</p>
                     <p className="text-xs" style={{ color: '#9C7A5A' }}>{o.time}</p>

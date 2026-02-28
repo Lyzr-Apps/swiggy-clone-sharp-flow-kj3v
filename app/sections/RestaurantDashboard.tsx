@@ -2,10 +2,7 @@
 
 import React, { useState } from 'react'
 import { FiHome, FiList, FiShoppingBag, FiStar, FiDollarSign, FiCheck, FiX, FiPlus, FiEdit2, FiTrash2, FiClock, FiMenu } from 'react-icons/fi'
-import { Badge } from '@/components/ui/badge'
-import { Switch } from '@/components/ui/switch'
-import { Input } from '@/components/ui/input'
-import { ScrollArea } from '@/components/ui/scroll-area'
+/* plain HTML/Tailwind used instead of shadcn/ui */
 
 const SIDEBAR_ITEMS = [
   { key: 'dashboard', label: 'Dashboard', icon: FiHome },
@@ -119,7 +116,7 @@ export default function RestaurantDashboard() {
                     </div>
                     <div className="text-right">
                       <p className="text-sm font-bold" style={{ color: '#2D1810' }}>Rs. {o.amount}</p>
-                      <Badge className="text-xs" style={{ backgroundColor: o.status === 'pending' ? '#FFB347' : o.status === 'preparing' ? '#FF6B35' : '#4CAF50', color: '#FFFFFF' }}>{o.status}</Badge>
+                      <span className="text-xs px-2 py-0.5 rounded-full" style={{ backgroundColor: o.status === 'pending' ? '#FFB347' : o.status === 'preparing' ? '#FF6B35' : '#4CAF50', color: '#FFFFFF' }}>{o.status}</span>
                     </div>
                   </div>
                 ))}
@@ -144,7 +141,7 @@ export default function RestaurantDashboard() {
                       <div>
                         <div className="flex items-center gap-2">
                           <p className="font-bold text-sm" style={{ color: '#2D1810' }}>{o.id}</p>
-                          <Badge className="text-xs capitalize" style={{ backgroundColor: o.status === 'pending' ? '#FFB347' : o.status === 'preparing' ? '#FF6B35' : '#4CAF50', color: '#FFFFFF' }}>{o.status}</Badge>
+                          <span className="text-xs capitalize px-2 py-0.5 rounded-full" style={{ backgroundColor: o.status === 'pending' ? '#FFB347' : o.status === 'preparing' ? '#FF6B35' : '#4CAF50', color: '#FFFFFF' }}>{o.status}</span>
                         </div>
                         <p className="text-sm mt-1" style={{ color: '#6B4423' }}>{o.customer}</p>
                         <p className="text-xs" style={{ color: '#9C7A5A' }}>{o.items}</p>
@@ -196,7 +193,7 @@ export default function RestaurantDashboard() {
                           <td className="px-4 py-3 font-medium" style={{ color: '#2D1810' }}>{m.name}</td>
                           <td className="px-4 py-3" style={{ color: '#9C7A5A' }}>{m.category}</td>
                           <td className="px-4 py-3" style={{ color: '#2D1810' }}>Rs. {m.price}</td>
-                          <td className="px-4 py-3"><Switch checked={m.available} onCheckedChange={() => toggleAvailability(m.id)} /></td>
+                          <td className="px-4 py-3"><button onClick={() => toggleAvailability(m.id)} className="relative inline-flex h-6 w-11 items-center rounded-full transition-colors duration-200" style={{ backgroundColor: m.available ? '#FF6B35' : '#F0DED0' }}><span className="inline-block h-5 w-5 transform rounded-full bg-white shadow-lg transition-transform duration-200" style={{ transform: m.available ? 'translateX(20px)' : 'translateX(2px)' }} /></button></td>
                           <td className="px-4 py-3">
                             <div className="flex gap-2">
                               <button className="p-1.5 rounded hover:bg-orange-50"><FiEdit2 className="w-4 h-4" style={{ color: '#FF6B35' }} /></button>

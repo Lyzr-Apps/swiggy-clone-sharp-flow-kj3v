@@ -2,9 +2,7 @@
 
 import React, { useState } from 'react'
 import { FiStar, FiClock, FiArrowLeft, FiMinus, FiPlus, FiShoppingCart } from 'react-icons/fi'
-import { Badge } from '@/components/ui/badge'
-import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area'
-import { Button } from '@/components/ui/button'
+/* plain HTML/Tailwind used instead of shadcn/ui */
 
 interface MenuItem {
   id: string
@@ -99,7 +97,7 @@ export default function RestaurantDetail({ restaurant, cart, onAddToCart, onRemo
 
       {/* Category Tabs */}
       <div className="sticky top-0 z-20 bg-white border-b shadow-sm" style={{ borderColor: '#F0DED0' }}>
-        <ScrollArea className="w-full">
+        <div className="w-full overflow-x-auto">
           <div className="flex px-4 py-2 gap-1">
             {MENU_CATEGORIES.map(cat => (
               <button key={cat} onClick={() => setActiveCategory(cat)} className="px-4 py-2 rounded-lg text-sm font-medium whitespace-nowrap transition-all" style={{ backgroundColor: activeCategory === cat ? '#FF6B35' : 'transparent', color: activeCategory === cat ? '#FFFFFF' : '#6B4423' }}>
@@ -107,8 +105,7 @@ export default function RestaurantDetail({ restaurant, cart, onAddToCart, onRemo
               </button>
             ))}
           </div>
-          <ScrollBar orientation="horizontal" />
-        </ScrollArea>
+        </div>
       </div>
 
       {/* Menu Items */}
@@ -123,7 +120,7 @@ export default function RestaurantDetail({ restaurant, cart, onAddToCart, onRemo
                     <span className="w-2 h-2 rounded-full" style={{ backgroundColor: item.isVeg ? '#4CAF50' : '#E53935' }} />
                   </span>
                   <h3 className="font-semibold text-sm" style={{ color: '#2D1810' }}>{item.name}</h3>
-                  {item.isBestseller && <Badge className="text-xs px-1.5 py-0" style={{ backgroundColor: '#FFD93D', color: '#2D1810', border: 'none' }}>Bestseller</Badge>}
+                  {item.isBestseller && <span className="text-xs px-1.5 py-0.5 rounded-full font-medium" style={{ backgroundColor: '#FFD93D', color: '#2D1810' }}>Bestseller</span>}
                 </div>
                 <p className="text-sm font-semibold" style={{ color: '#2D1810' }}>Rs. {item.price}</p>
                 <p className="text-xs" style={{ color: '#9C7A5A' }}>{item.description}</p>
