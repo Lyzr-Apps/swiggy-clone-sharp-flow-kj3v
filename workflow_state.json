@@ -1,0 +1,17 @@
+{
+  "agents": {
+    "recommendation_agent": {
+      "agent_id": "69a2cb5a235ba026f0ab6145",
+      "name": "Restaurant Recommendation Agent",
+      "node_id": "recommendation_agent"
+    },
+    "support_agent": {
+      "agent_id": "69a2cb5b978d93f884782db2",
+      "name": "Order Support Agent",
+      "node_id": "support_agent"
+    }
+  },
+  "pattern": "multiple_independent_agents",
+  "total_agents": 2,
+  "created_at": "2026-02-28"
+}

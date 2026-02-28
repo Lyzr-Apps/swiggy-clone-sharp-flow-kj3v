@@ -1,0 +1,11 @@
+{
+  "agent_type": "json",
+  "accessor": "json",
+  "has_module_outputs": false,
+  "schema": {
+    "message": "string",
+    "action_taken": "string",
+    "requires_escalation": "boolean",
+    "suggested_actions": "array of strings"
+  }
+}

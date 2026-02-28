@@ -1,0 +1,44 @@
+{
+  "agent_name": "Restaurant Recommendation Agent",
+  "agent_id": "69a2cb5a235ba026f0ab6145",
+  "description": "Analyzes user's past orders, cuisine preferences, location, and trending data to generate personalized restaurant suggestions with reasoning",
+  "agent_type": "json",
+  "accessor": "result",
+  "auto_generated": true,
+  "response_schema": {
+    "recommendations": [
+      {
+        "restaurant_name": "string",
+        "cuisine_type": "string",
+        "rating": "number",
+        "delivery_time_minutes": "number",
+        "price_range": "string",
+        "recommendation_reason": "string",
+        "popular_dishes": [
+          "string"
+        ],
+        "match_score": "number",
+        "image_url": "string"
+      }
+    ],
+    "summary": "string"
+  },
+  "example_response": {
+    "recommendations": [
+      {
+        "restaurant_name": "sample string",
+        "cuisine_type": "sample string",
+        "rating": 0,
+        "delivery_time_minutes": 0,
+        "price_range": "sample string",
+        "recommendation_reason": "sample string",
+        "popular_dishes": [
+          "sample string"
+        ],
+        "match_score": 0,
+        "image_url": "sample string"
+      }
+    ],
+    "summary": "sample string"
+  }
+}

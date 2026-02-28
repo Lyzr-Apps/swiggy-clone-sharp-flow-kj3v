@@ -1,0 +1,24 @@
+{
+  "agent_name": "Order Support Agent",
+  "agent_id": "69a2cb5b978d93f884782db2",
+  "description": "Conversational chatbot helping customers with order status, refund requests, cancellation policies, and general FAQs",
+  "agent_type": "json",
+  "accessor": "result",
+  "auto_generated": true,
+  "response_schema": {
+    "message": "string",
+    "action_taken": "string",
+    "requires_escalation": "boolean",
+    "suggested_actions": [
+      "string"
+    ]
+  },
+  "example_response": {
+    "message": "sample string",
+    "action_taken": "sample string",
+    "requires_escalation": false,
+    "suggested_actions": [
+      "sample string"
+    ]
+  }
+}

@@ -1,0 +1,29 @@
+SwiggyClone food delivery platform UI - Build complete.
+
+Files created:
+- app/page.tsx (composition shell with role switching, cart state, ErrorBoundary)
+- app/sections/CustomerHome.tsx (restaurant search, categories, AI recommendations, restaurant cards)
+- app/sections/RestaurantDetail.tsx (menu with categories, quantity stepper, cart bar)
+- app/sections/CartCheckout.tsx (cart items, address, payment, coupon, price breakdown)
+- app/sections/OrderTracking.tsx (order timeline, delivery partner, ETA)
+- app/sections/OrderSupport.tsx (floating help button, chat panel with Order Support Agent)
+- app/sections/RestaurantDashboard.tsx (restaurant owner dashboard with orders, menu, reviews, earnings)
+- app/sections/DeliveryDashboard.tsx (delivery partner dashboard with active delivery, stats)
+- app/sections/AdminPanel.tsx (admin analytics, user/restaurant management, order monitoring)
+
+Agents integrated:
+- Restaurant Recommendation Agent (69a2cb5a235ba026f0ab6145) - CustomerHome AI picks
+- Order Support Agent (69a2cb5b978d93f884782db2) - OrderSupport chat
+
+Features:
+- 4 role views: Customer, Restaurant, Delivery, Admin
+- Sunset theme (warm oranges, deep reds, golden yellows)
+- 15+ mock restaurants with diverse cuisines
+- Full cart and checkout flow
+- Real-time order tracking with animation
+- AI-powered restaurant recommendations
+- AI order support chat
+- Sample data toggle
+- Agent info panel
+- Responsive design
+- No emojis, no toast, no sign-in

@@ -1,0 +1,76 @@
+{
+  "workflow": {
+    "nodes": [
+      {
+        "id": "input_node",
+        "type": "Input",
+        "label": "Customer Input",
+        "nodeCategory": "input"
+      },
+      {
+        "id": "recommendation_agent",
+        "type": "Agent",
+        "label": "Restaurant Recommendation Agent",
+        "nodeCategory": "agent",
+        "agent_id": "69a2cb5a235ba026f0ab6145"
+      },
+      {
+        "id": "support_agent",
+        "type": "Agent",
+        "label": "Order Support Agent",
+        "nodeCategory": "agent",
+        "agent_id": "69a2cb5b978d93f884782db2"
+      },
+      {
+        "id": "output_recommendation",
+        "type": "Output",
+        "label": "Restaurant Suggestions",
+        "nodeCategory": "end"
+      },
+      {
+        "id": "output_support",
+        "type": "Output",
+        "label": "Support Response",
+        "nodeCategory": "end"
+      }
+    ],
+    "edges": [
+      { "source": "input_node", "target": "recommendation_agent" },
+      { "source": "input_node", "target": "support_agent" },
+      { "source": "recommendation_agent", "target": "output_recommendation" },
+      { "source": "support_agent", "target": "output_support" }
+    ]
+  },
+  "agents": [
+    {
+      "agent_id": "69a2cb5a235ba026f0ab6145",
+      "name": "Restaurant Recommendation Agent",
+      "description": "Analyzes user's past orders, cuisine preferences, location, and trending data to generate personalized restaurant suggestions with reasoning",
+      "model": "gpt-4.1",
+      "provider": "openai",
+      "temperature": 0.6,
+      "top_p": 0.95,
+      "capabilities": {
+        "image_output": false,
+        "voice": false,
+        "file_output": false,
+        "knowledge_base": false
+      }
+    },
+    {
+      "agent_id": "69a2cb5b978d93f884782db2",
+      "name": "Order Support Agent",
+      "description": "Conversational chatbot helping customers with order status, refund requests, cancellation policies, and general FAQs",
+      "model": "gpt-4.1",
+      "provider": "openai",
+      "temperature": 0.4,
+      "top_p": 1.0,
+      "capabilities": {
+        "image_output": false,
+        "voice": false,
+        "file_output": false,
+        "knowledge_base": false
+      }
+    }
+  ]
+}
